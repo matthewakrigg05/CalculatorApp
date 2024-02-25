@@ -9,11 +9,12 @@ public class Calculator {
     }
 
     public enum oneNumOps {
-        squared, squareRoot, sin,cos, tan, ln, logBaseTen
+        squared, squareRoot, sin,cos, tan, ln, logBaseTen, pi
     }
 
     private double num1, num2;
     private twoNumOps mode = twoNumOps.normal;
+
     private Double calculateTwoNums() {
         if (mode.equals(twoNumOps.normal)) {
             return num2;
@@ -40,6 +41,7 @@ public class Calculator {
         throw new Error();
 
     }
+
     public Double calculateOneNum(oneNumOps newMode, double num) {
 
         if (newMode.equals(oneNumOps.squared)) {
@@ -63,6 +65,9 @@ public class Calculator {
         if (newMode.equals(oneNumOps.logBaseTen)){
             return Math.log10(num);
         }
+        if (newMode.equals(oneNumOps.pi)){
+             return Math.PI * num;
+        }
 
         throw new Error();
     }
@@ -74,17 +79,21 @@ public class Calculator {
         return Double.NaN;
     }
 
-    public Double calculateOps(twoNumOps newMode, Double num){
-        if (mode.equals(twoNumOps.normal)){
-        num2 = 0.0;
-        num1 = num;
-        mode = newMode; }
-        return Double.NaN;
+    public Double calculateOps(twoNumOps newMode, Double num) {
+        if (mode.equals(twoNumOps.normal)) {
+            num2 = 0.0;
+            num1 = num;
+            mode = newMode;
+            return Double.NaN;
+        } else {
+            num2 = num;
+            num1 = calculateTwoNums();
+            mode = newMode;
+            return num1;
+        }
     }
 
-    public Double calculateEqual(Double num){
-        return calculateOps(twoNumOps.normal, num);
+   public Double calculateEqual(Double num){
+            return calculateOps(twoNumOps.normal, num);}
     }
 
-
-}

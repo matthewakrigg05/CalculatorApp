@@ -32,11 +32,11 @@ public class CalcUI implements ActionListener {
 
     private final JButton but[],butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquared,
-            butCos, butSin, butTan, toPowerOfY, butlogBaseTen, butBinary, butln;
+            butCos, butSin, butTan, toPowerOfY, butlogBaseTen, butBinary, butln, butPi;
 
     private final Calculator calc;
 
-    private final String[] buttons = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Pi", "e"};
+    private final String[] buttons = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     private final Font font;
     private final Font textFont;
@@ -65,6 +65,7 @@ public class CalcUI implements ActionListener {
         but = new JButton[10];
         for (int i = 0; i < 10; i++) but[i] = new JButton(String.valueOf(i));
 
+        butPi = new JButton("\u03C0");
         butAdd = new JButton("+");
         butMinus = new JButton("-");
         butMultiply = new JButton("*");
@@ -137,25 +138,25 @@ public class CalcUI implements ActionListener {
         panelSub4.add(but[7]);
         panelSub4.add(but[8]);
         panelSub4.add(but[9]);
-        panelSub4.add(Box.createHorizontalStrut(15));
-        panelSub4.add(butEqual);
-        panelSub4.add(butCancel);
+        panelSub4.add(Box.createHorizontalStrut(110));
         panel.add(panelSub4);
 
-        panelSub5.add(Box.createHorizontalStrut(92));
+        panelSub5.add(butEqual);
         panelSub5.add(but[0]);
-        panelSub5.add(butln);
-        panelSub5.add(Box.createHorizontalStrut(210));
+        panelSub5.add(butCancel);
+        panelSub5.add(Box.createHorizontalStrut(110));
         panel.add(panelSub5);
 
         panelSub6.add(butSquared);
         panelSub6.add(butSquareRoot);
         panelSub6.add(toPowerOfY);
+        panelSub6.add(butPi);
         panel.add(panelSub6);
 
         panelSub7.add(butCos);
         panelSub7.add(butSin);
         panelSub7.add(butTan);
+        panelSub7.add(butln);
         panel.add(panelSub7);
 
         panelSub8.add(butlogBaseTen);
@@ -165,6 +166,7 @@ public class CalcUI implements ActionListener {
         for (int i = 0; i < 10; i++) {
             but[i].addActionListener(this);
         }
+        butPi.addActionListener(this);
         butAdd.addActionListener(this);
         butMinus.addActionListener(this);
         butMultiply.addActionListener(this);
@@ -200,6 +202,7 @@ public class CalcUI implements ActionListener {
 
 
         try {
+
             checkNum = Double.parseDouble(text.getText());
         }
         catch(NumberFormatException ignored) {}
@@ -250,6 +253,10 @@ public class CalcUI implements ActionListener {
 
             if (source == butln)
                 writer(calc.calculateOneNum(Calculator.oneNumOps.ln, reader()));
+
+            if (source == butPi){
+                writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
+            }
 
 
             if (source == butEqual)
