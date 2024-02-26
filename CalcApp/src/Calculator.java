@@ -7,7 +7,7 @@ public class Calculator {
     }
 
     public enum oneNumOps {
-        squared, squareRoot, sin,cos, tan, ln, logBaseTen, pi
+        squared, squareRoot, sin,cos, tan, ln, logBaseTen, pi, e
     }
 
     private double num1, num2;
@@ -49,7 +49,8 @@ public class Calculator {
             return Math.sqrt(num);
         }
         if (newMode.equals(oneNumOps.sin)){
-            return Math.sin(num);
+
+             return Math.sin(num);
         }
         if (newMode.equals(oneNumOps.cos)) {
             return Math.cos(num);
@@ -65,6 +66,9 @@ public class Calculator {
         }
         if (newMode.equals(oneNumOps.pi)){
              return Math.PI * num;
+        }
+        if (newMode.equals(oneNumOps.e)) {
+            return Math.exp(num);
         }
 
         throw new Error();
