@@ -11,3 +11,7 @@
 6. `git commit -m 'insert name'` -> insert commit message (-m) detailing what i did
 
 7. `git push` -> pushes to github
+
+8. `git push --set-upstream origin 'inserted name'`
+
+[md cheatsheet] (https://www.markdownguide.org/cheat-sheet/)
