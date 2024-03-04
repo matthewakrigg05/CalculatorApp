@@ -30,7 +30,8 @@ public class CalcUI implements ActionListener {
 
     private final JButton but[],butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquared,
-            butCos, butSin, butTan, toPowerOfY, butlogBaseTen, butBinary, butln, butPi, butExp;
+            butCos, butSin, butTan, toPowerOfY, butlogBaseTen, butBinary, butln, butPi, butExp,
+            butDecimalPoint;
 
     private final Calculator calc;
 
@@ -65,8 +66,9 @@ public class CalcUI implements ActionListener {
         but = new JButton[10];
         for (int i = 0; i < 10; i++) but[i] = new JButton(String.valueOf(i));
 
-        butPi = new JButton("\u03C0");
-        butExp = new JButton("e\u02E3");
+        butPi = new JButton("π");
+        butExp = new JButton("eˣ");
+        butDecimalPoint = new JButton(".");
         butAdd = new JButton("+");
         butMinus = new JButton("-");
         butMultiply = new JButton("*");
@@ -102,6 +104,7 @@ public class CalcUI implements ActionListener {
 
         butPi.setFont(textFontTwo);
         butExp.setFont(textFontTwo);
+        butDecimalPoint.setFont(font);
         butAdd.setFont(font);
         butMinus.setFont(font);
         butMultiply.setFont(font);
@@ -150,6 +153,7 @@ public class CalcUI implements ActionListener {
         panelSub5.add(but[0]);
         panelSub5.add(butCancel);
         panelSub5.add(Box.createHorizontalStrut(110));
+        panelSub5.add(butDecimalPoint);
         panel.add(panelSub5);
 
         panelSub6.add(butSquared);
@@ -172,6 +176,7 @@ public class CalcUI implements ActionListener {
         }
         butPi.addActionListener(this);
         butExp.addActionListener(this);
+        butDecimalPoint.addActionListener(this);
         butAdd.addActionListener(this);
         butMinus.addActionListener(this);
         butMultiply.addActionListener(this);
@@ -211,7 +216,6 @@ public class CalcUI implements ActionListener {
 
         if (source == butExp) {
             writer(calc.calculateOneNum(Calculator.oneNumOps.e, reader()));
-
         }
 
         try {
@@ -220,6 +224,12 @@ public class CalcUI implements ActionListener {
         catch(NumberFormatException ignored) {}
 
         if (checkNum != null || source == butCancel) {
+
+            if (source == butDecimalPoint) {
+                text.replaceSelection(".");
+                return;
+            }
+
             if (source == butAdd) {
                 writer(calc.calculateOps(Calculator.twoNumOps.add, reader()));
                 text.replaceSelection(butAdd.getText());
@@ -313,14 +323,3 @@ public class CalcUI implements ActionListener {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
