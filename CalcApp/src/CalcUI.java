@@ -1,15 +1,16 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-
 import java.io.*;
+import java.math.BigDecimal;
+
+
 
 public class CalcUI implements ActionListener {
 
@@ -296,20 +297,18 @@ public class CalcUI implements ActionListener {
             num = Double.parseDouble(str); }
         else num = Double.parseDouble(str);
 
-        /*if (str.contains("\u03C0")) {
-            String newString;
-            newString = str.replaceAll(String.valueOf("/u03C0"), String.valueOf(Calculator.getPi()));
-            num = Double.parseDouble(newString);
-        }   */
-
-
         return num;
     }
 
-    public void writer(final Double num) {
+    public void writer(Double num) {
         if (Double.isNaN(num)) {
             text.setText("");
-        } else {
+        }
+        else if (num % 1 == 0) {
+            BigDecimal number1 = BigDecimal.valueOf(num);
+            text.setText(String.valueOf(number1.stripTrailingZeros()));
+        }
+        else {
             text.setText(Double.toString(num));
         }
     }
