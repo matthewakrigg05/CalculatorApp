@@ -153,6 +153,7 @@ public class CalcUI implements ActionListener {
         panelSub5.add(but[0]);
         panelSub5.add(butCancel);
         panelSub5.add(Box.createHorizontalStrut(66));
+
         panelSub5.add(butDecimalPoint);
         panel.add(panelSub5);
 
