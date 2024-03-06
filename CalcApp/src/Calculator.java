@@ -7,7 +7,7 @@ public class Calculator {
     }
 
     public enum oneNumOps {
-        squared, squareRoot, sin,cos, tan, ln, logBaseTen, pi, e
+        squared, squareRoot, sin, cos, tan, ln, logBaseTen, pi, e
     }
 
     private double num1, num2;
@@ -23,16 +23,16 @@ public class Calculator {
         if (mode.equals(twoNumOps.subtract)) {
             return num1 - num2;
         }
-        if (mode.equals(twoNumOps.multiply)){
+        if (mode.equals(twoNumOps.multiply)) {
             return num1 * num2;
         }
-        if (mode.equals(twoNumOps.divide)){
+        if (mode.equals(twoNumOps.divide)) {
             return num1 / num2;
         }
-        if (mode.equals(twoNumOps.toPowerOfY)){
+        if (mode.equals(twoNumOps.toPowerOfY)) {
             return Math.pow(num1, num2);
         }
-        if (mode.equals(twoNumOps.customLog)){
+        if (mode.equals(twoNumOps.customLog)) {
             return (Math.log(num1) / Math.log(num2));
         }
 
@@ -49,32 +49,30 @@ public class Calculator {
             return Math.sqrt(num);
         }
         if (newMode.equals(oneNumOps.sin)){
-
-             return Math.sin(num);
+            return Math.sin(num);
         }
-        if (newMode.equals(oneNumOps.cos)) {
+        if (newMode.equals(oneNumOps.cos)){
             return Math.cos(num);
         }
         if (newMode.equals(oneNumOps.tan)){
             return Math.tan(num);
         }
-        if (newMode.equals(oneNumOps.ln)) {
+        if (newMode.equals(oneNumOps.ln)){
             return Math.log(num);
         }
         if (newMode.equals(oneNumOps.logBaseTen)){
             return Math.log10(num);
         }
         if (newMode.equals(oneNumOps.pi)){
-             return Math.PI * num;
+            return Math.PI * num;
         }
-        if (newMode.equals(oneNumOps.e)) {
+        if (newMode.equals(oneNumOps.e)){
             return Math.exp(num);
         }
-
         throw new Error();
     }
 
-    public Double reset(){
+    public Double reset() {
         num1 = 0.0;
         num2 = 0.0;
         mode = twoNumOps.normal;
@@ -95,7 +93,8 @@ public class Calculator {
         }
     }
 
-   public Double calculateEqual(Double num){
-            return calculateOps(twoNumOps.normal, num);}
+    public Double calculateEqual(Double num) {
+        return calculateOps(twoNumOps.normal, num);
     }
 
+}
