@@ -74,14 +74,14 @@ public class CalcUI implements ActionListener {
         butMultiply = new JButton("*");
         butDivide = new JButton("/");
         butEqual = new JButton("=");
-        butSquareRoot = new JButton("sqrt");
-        butSquared = new JButton("x*x");
+        butSquareRoot = new JButton("√x");
+        butSquared = new JButton("x²");
         butCos = new JButton("Cos");
         butSin = new JButton("Sin");
         butTan = new JButton("Tan");
         butln = new JButton("ln");
-        toPowerOfY = new JButton("x^y");
-        butlogBaseTen = new JButton("log10(x)");
+        toPowerOfY = new JButton("xʸ");
+        butlogBaseTen = new JButton("log₁₀(x)");
         butCancel = new JButton("C");
         butBinary = new JButton("Bin");
 
