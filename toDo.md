@@ -1,0 +1,5 @@
+ - Redo the UI of the calculator
+ - Make it so that you can see the numbers already typed
+ - Look into adding some more mathematical methods
+   - eg quadratic solver
+ - fix some issues with Pi button
