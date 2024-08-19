@@ -14,8 +14,9 @@ public class Calculator {
     private twoNumOps mode = twoNumOps.normal;
 
     private Double calculateTwoNums() {
+        
         if (mode.equals(twoNumOps.normal)) {
-            return num2;
+            return num1;
         }
         if (mode.equals(twoNumOps.add)) {
             return num1 + num2;
@@ -42,44 +43,16 @@ public class Calculator {
     public Double calculateOneNum(oneNumOps newMode, double num) {
 
         switch (newMode) {
-
-            case squared: {
-                return num * num;
-            }
-            case squareRoot: {
-                return Math.sqrt(num);
-            }
-
-            case sin: {
-                return Math.sin(num);
-            }
-
-            case cos: {
-                return Math.cos(num);
-            }
-
-            case tan: {
-                return Math.tan(num);
-            }
-
-            case ln: {
-                return Math.log(num);
-            }
-
-            case logBaseTen: {
-                return Math.log10(num);
-            }
-
-            case pi: {
-                return Math.PI * num;
-            }
-
-            case e: {
-                return Math.exp(num);
-            }
-
-            default:
-                throw new Error();
+            case squared: return num * num;
+            case squareRoot: return Math.sqrt(num);
+            case sin: return Math.sin(num);
+            case cos: return Math.cos(num);
+            case tan: return Math.tan(num);
+            case ln: return Math.log(num);
+            case logBaseTen: return Math.log10(num);
+            case pi: return Math.PI * num;
+            case e: return Math.exp(num);
+            default: throw new Error();
         }
     }
 

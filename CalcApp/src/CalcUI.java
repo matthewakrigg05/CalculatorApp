@@ -315,8 +315,8 @@ public class CalcUI implements ActionListener {
             text.setText("");
         }
         else if (num % 1 == 0) {
-            BigDecimal number1 = BigDecimal.valueOf(num);
-            text.setText(String.valueOf(number1.stripTrailingZeros()));
+            BigDecimal number1 = BigDecimal.valueOf(num).stripTrailingZeros();
+            text.setText(number1.toPlainString());
         }
         else {
             text.setText(Double.toString(num));
