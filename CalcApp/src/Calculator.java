@@ -14,62 +14,32 @@ public class Calculator {
     private twoNumOps mode = twoNumOps.normal;
 
     private Double calculateTwoNums() {
-        if (mode.equals(twoNumOps.normal)) {
-            return num2;
+        switch (mode) {
+            case normal: return num1;
+            case add: return num1 + num2;
+            case subtract: return num1 - num2;
+            case multiply: return num1 * num2;
+            case divide: return num1 / num2;
+            case toPowerOfY: return Math.pow(num1, num2);
+            case customLog: return Math.log(num1) / Math.log(num2);
+            default: throw new Error();
         }
-        if (mode.equals(twoNumOps.add)) {
-            return num1 + num2;
-        }
-        if (mode.equals(twoNumOps.subtract)) {
-            return num1 - num2;
-        }
-        if (mode.equals(twoNumOps.multiply)) {
-            return num1 * num2;
-        }
-        if (mode.equals(twoNumOps.divide)) {
-            return num1 / num2;
-        }
-        if (mode.equals(twoNumOps.toPowerOfY)) {
-            return Math.pow(num1, num2);
-        }
-        if (mode.equals(twoNumOps.customLog)) {
-            return (Math.log(num1) / Math.log(num2));
-        }
-
-        throw new Error();
-
     }
 
     public Double calculateOneNum(oneNumOps newMode, double num) {
 
-        if (newMode.equals(oneNumOps.squared)) {
-            return num * num;
+        switch (newMode) {
+            case squared: return num * num;
+            case squareRoot: return Math.sqrt(num);
+            case sin: return Math.sin(num);
+            case cos: return Math.cos(num);
+            case tan: return Math.tan(num);
+            case ln: return Math.log(num);
+            case logBaseTen: return Math.log10(num);
+            case pi: return Math.PI * num;
+            case e: return Math.exp(num);
+            default: throw new Error();
         }
-        if (newMode.equals(oneNumOps.squareRoot)){
-            return Math.sqrt(num);
-        }
-        if (newMode.equals(oneNumOps.sin)){
-            return Math.sin(num);
-        }
-        if (newMode.equals(oneNumOps.cos)){
-            return Math.cos(num);
-        }
-        if (newMode.equals(oneNumOps.tan)){
-            return Math.tan(num);
-        }
-        if (newMode.equals(oneNumOps.ln)){
-            return Math.log(num);
-        }
-        if (newMode.equals(oneNumOps.logBaseTen)){
-            return Math.log10(num);
-        }
-        if (newMode.equals(oneNumOps.pi)){
-            return Math.PI * num;
-        }
-        if (newMode.equals(oneNumOps.e)){
-            return Math.exp(num);
-        }
-        throw new Error();
     }
 
     public Double reset() {

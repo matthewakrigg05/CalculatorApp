@@ -25,23 +25,18 @@ public class CalcUI implements ActionListener {
     private final JPanel panelSub6;
     private final JPanel panelSub7;
     private final JPanel panelSub8;
-
     private final JTextArea text;
 
     private final JButton but[],butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquared,
-            butCos, butSin, butTan, toPowerOfY, butlogBaseTen, butBinary, butln, butPi, butExp,
+            butCos, butSin, butTan, toPowerOfY, butLogBaseTen, butBinary, butLn, butPi, butExp,
             butDecimalPoint;
 
     private final Calculator calc;
-
     private final String[] buttons = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-
     private final Font font;
     private final Font textFont;
     private final Font textFontTwo;
-   // private final ImageIcon image;
-
 
     public CalcUI() throws IOException {
         frame = new JFrame("Matts Calculator");
@@ -79,12 +74,11 @@ public class CalcUI implements ActionListener {
         butCos = new JButton("Cos");
         butSin = new JButton("Sin");
         butTan = new JButton("Tan");
-        butln = new JButton("ln");
+        butLn = new JButton("ln");
         toPowerOfY = new JButton("xʸ");
-        butlogBaseTen = new JButton("log₁₀(x)");
+        butLogBaseTen = new JButton("log₁₀(x)");
         butCancel = new JButton("C");
         butBinary = new JButton("Bin");
-
         calc = new Calculator();
     }
 
@@ -115,9 +109,9 @@ public class CalcUI implements ActionListener {
         butCos.setFont(font);
         butSin.setFont(font);
         butTan.setFont(font);
-        butln.setFont(font);
+        butLn.setFont(font);
         toPowerOfY.setFont(font);
-        butlogBaseTen.setFont(font);
+        butLogBaseTen.setFont(font);
         butCancel.setFont(font);
         butBinary.setFont(font);
 
@@ -165,10 +159,10 @@ public class CalcUI implements ActionListener {
         panelSub7.add(butCos);
         panelSub7.add(butSin);
         panelSub7.add(butTan);
-        panelSub7.add(butln);
+        panelSub7.add(butLn);
         panel.add(panelSub7);
 
-        panelSub8.add(butlogBaseTen);
+        panelSub8.add(butLogBaseTen);
         panelSub8.add(butBinary);
         panel.add(panelSub8);
 
@@ -187,9 +181,9 @@ public class CalcUI implements ActionListener {
         butCos.addActionListener(this);
         butSin.addActionListener(this);
         butTan.addActionListener(this);
-        butln.addActionListener(this);
+        butLn.addActionListener(this);
         toPowerOfY.addActionListener(this);
-        butlogBaseTen.addActionListener(this);
+        butLogBaseTen.addActionListener(this);
         butBinary.addActionListener(this);
 
         butEqual.addActionListener(this);
@@ -211,14 +205,6 @@ public class CalcUI implements ActionListener {
             }
         }
 
-        if (source == butPi){
-            writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
-        }
-
-        if (source == butExp) {
-            writer(calc.calculateOneNum(Calculator.oneNumOps.e, reader()));
-        }
-
         try {
             checkNum = Double.parseDouble(text.getText());
         }
@@ -229,6 +215,10 @@ public class CalcUI implements ActionListener {
             if (source == butDecimalPoint) {
                 text.replaceSelection(".");
                 return;
+            }
+
+            if (source == butPi){
+                writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
             }
 
             if (source == butAdd) {
@@ -271,10 +261,10 @@ public class CalcUI implements ActionListener {
             if (source == butTan)
                 writer(calc.calculateOneNum(Calculator.oneNumOps.tan, reader()));
 
-            if (source == butlogBaseTen)
+            if (source == butLogBaseTen)
                 writer(calc.calculateOneNum(Calculator.oneNumOps.logBaseTen, reader()));
 
-            if (source == butln)
+            if (source == butLn)
                 writer(calc.calculateOneNum(Calculator.oneNumOps.ln, reader()));
 
             if (source == butEqual)
@@ -286,7 +276,16 @@ public class CalcUI implements ActionListener {
             if (source == butBinary)
                 parsetoBinary();
         }
+        else {
 
+            if (source == butPi) {
+                writer(Math.PI);
+            }
+
+            if (source == butExp) {
+                writer(calc.calculateOneNum(Calculator.oneNumOps.e, reader()));
+            }
+        }
         text.selectAll();
     }
 
@@ -316,8 +315,8 @@ public class CalcUI implements ActionListener {
             text.setText("");
         }
         else if (num % 1 == 0) {
-            BigDecimal number1 = BigDecimal.valueOf(num);
-            text.setText(String.valueOf(number1.stripTrailingZeros()));
+            BigDecimal number1 = BigDecimal.valueOf(num).stripTrailingZeros();
+            text.setText(number1.toPlainString());
         }
         else {
             text.setText(Double.toString(num));
