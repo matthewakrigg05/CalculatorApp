@@ -14,30 +14,16 @@ public class Calculator {
     private twoNumOps mode = twoNumOps.normal;
 
     private Double calculateTwoNums() {
-        
-        if (mode.equals(twoNumOps.normal)) {
-            return num1;
+        switch (mode) {
+            case normal: return num1;
+            case add: return num1 + num2;
+            case subtract: return num1 - num2;
+            case multiply: return num1 * num2;
+            case divide: return num1 / num2;
+            case toPowerOfY: return Math.pow(num1, num2);
+            case customLog: return Math.log(num1) / Math.log(num2);
+            default: throw new Error();
         }
-        if (mode.equals(twoNumOps.add)) {
-            return num1 + num2;
-        }
-        if (mode.equals(twoNumOps.subtract)) {
-            return num1 - num2;
-        }
-        if (mode.equals(twoNumOps.multiply)) {
-            return num1 * num2;
-        }
-        if (mode.equals(twoNumOps.divide)) {
-            return num1 / num2;
-        }
-        if (mode.equals(twoNumOps.toPowerOfY)) {
-            return Math.pow(num1, num2);
-        }
-        if (mode.equals(twoNumOps.customLog)) {
-            return (Math.log(num1) / Math.log(num2));
-        }
-
-        throw new Error();
     }
 
     public Double calculateOneNum(oneNumOps newMode, double num) {
