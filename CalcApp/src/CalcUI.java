@@ -211,14 +211,6 @@ public class CalcUI implements ActionListener {
             }
         }
 
-        if (source == butPi){
-            writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
-        }
-
-        if (source == butExp) {
-            writer(calc.calculateOneNum(Calculator.oneNumOps.e, reader()));
-        }
-
         try {
             checkNum = Double.parseDouble(text.getText());
         }
@@ -229,6 +221,10 @@ public class CalcUI implements ActionListener {
             if (source == butDecimalPoint) {
                 text.replaceSelection(".");
                 return;
+            }
+
+            if (source == butPi){
+                writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
             }
 
             if (source == butAdd) {
@@ -286,7 +282,16 @@ public class CalcUI implements ActionListener {
             if (source == butBinary)
                 parsetoBinary();
         }
+        else {
 
+            if (source == butPi) {
+                writer(Math.PI);
+            }
+
+            if (source == butExp) {
+                writer(calc.calculateOneNum(Calculator.oneNumOps.e, reader()));
+            }
+        }
         text.selectAll();
     }
 

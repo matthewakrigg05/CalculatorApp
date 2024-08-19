@@ -3,3 +3,4 @@
  - Look into adding some more mathematical methods
    - eg quadratic solver
  - fix some issues with Pi button
+ - switch statements (faster)
