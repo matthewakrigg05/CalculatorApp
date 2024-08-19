@@ -37,39 +37,50 @@ public class Calculator {
         }
 
         throw new Error();
-
     }
 
     public Double calculateOneNum(oneNumOps newMode, double num) {
 
-        if (newMode.equals(oneNumOps.squared)) {
-            return num * num;
+        switch (newMode) {
+
+            case squared: {
+                return num * num;
+            }
+            case squareRoot: {
+                return Math.sqrt(num);
+            }
+
+            case sin: {
+                return Math.sin(num);
+            }
+
+            case cos: {
+                return Math.cos(num);
+            }
+
+            case tan: {
+                return Math.tan(num);
+            }
+
+            case ln: {
+                return Math.log(num);
+            }
+
+            case logBaseTen: {
+                return Math.log10(num);
+            }
+
+            case pi: {
+                return Math.PI * num;
+            }
+
+            case e: {
+                return Math.exp(num);
+            }
+
+            default:
+                throw new Error();
         }
-        if (newMode.equals(oneNumOps.squareRoot)){
-            return Math.sqrt(num);
-        }
-        if (newMode.equals(oneNumOps.sin)){
-            return Math.sin(num);
-        }
-        if (newMode.equals(oneNumOps.cos)){
-            return Math.cos(num);
-        }
-        if (newMode.equals(oneNumOps.tan)){
-            return Math.tan(num);
-        }
-        if (newMode.equals(oneNumOps.ln)){
-            return Math.log(num);
-        }
-        if (newMode.equals(oneNumOps.logBaseTen)){
-            return Math.log10(num);
-        }
-        if (newMode.equals(oneNumOps.pi)){
-            return Math.PI * num;
-        }
-        if (newMode.equals(oneNumOps.e)){
-            return Math.exp(num);
-        }
-        throw new Error();
     }
 
     public Double reset() {
