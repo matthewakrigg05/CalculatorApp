@@ -66,5 +66,4 @@ public class Calculator {
     public Double calculateEqual(Double num) {
         return calculateOps(twoNumOps.normal, num);
     }
-
 }
