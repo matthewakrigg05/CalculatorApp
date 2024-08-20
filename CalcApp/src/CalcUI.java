@@ -10,12 +10,9 @@ import javax.swing.BoxLayout;
 import java.io.*;
 import java.math.BigDecimal;
 
-
-
 public class CalcUI implements ActionListener {
 
     private final JFrame frame;
-
     private final JPanel panel;
     private final JPanel panelSub1;
     private final JPanel panelSub2;
@@ -40,7 +37,6 @@ public class CalcUI implements ActionListener {
 
     public CalcUI() throws IOException {
         frame = new JFrame("Matts Calculator");
-
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
@@ -60,7 +56,6 @@ public class CalcUI implements ActionListener {
 
         but = new JButton[10];
         for (int i = 0; i < 10; i++) but[i] = new JButton(String.valueOf(i));
-
         butPi = new JButton("π");
         butExp = new JButton("eˣ");
         butDecimalPoint = new JButton(".");
@@ -87,8 +82,6 @@ public class CalcUI implements ActionListener {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
         text.setFont(textFont);
         text.setEditable(false);
 
@@ -185,7 +178,6 @@ public class CalcUI implements ActionListener {
         toPowerOfY.addActionListener(this);
         butLogBaseTen.addActionListener(this);
         butBinary.addActionListener(this);
-
         butEqual.addActionListener(this);
         butCancel.addActionListener(this);
 
@@ -211,70 +203,72 @@ public class CalcUI implements ActionListener {
         catch(NumberFormatException ignored) {}
 
         if (checkNum != null || source == butCancel) {
-
-            if (source == butDecimalPoint) {
-                text.replaceSelection(".");
-                return;
+            switch (e.getActionCommand()){
+                case ".":
             }
-
-            if (source == butPi){
-                writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
-            }
-
-            if (source == butAdd) {
-                writer(calc.calculateOps(Calculator.twoNumOps.add, reader()));
-                text.replaceSelection(butAdd.getText());
-            }
-
-            if (source == butMinus) {
-                writer(calc.calculateOps(Calculator.twoNumOps.subtract, reader()));
-                text.replaceSelection(butMinus.getText());
-            }
-
-            if (source == butMultiply) {
-                writer(calc.calculateOps(Calculator.twoNumOps.multiply, reader()));
-                text.replaceSelection(butMultiply.getText());
-            }
-
-            if (source == butDivide) {
-                writer(calc.calculateOps(Calculator.twoNumOps.divide, reader()));
-                text.replaceSelection(butDivide.getText());
-            }
-
-            if (source == toPowerOfY) {
-                writer(calc.calculateOps(Calculator.twoNumOps.toPowerOfY, reader()));
-            }
-
-            if (source == butSquared) {
-                writer(calc.calculateOneNum(Calculator.oneNumOps.squared, reader()));
-            }
-
-            if (source == butSquareRoot)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.squareRoot, reader()));
-
-            if (source == butCos)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.cos, reader()));
-
-            if (source == butSin)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.sin, reader()));
-
-            if (source == butTan)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.tan, reader()));
-
-            if (source == butLogBaseTen)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.logBaseTen, reader()));
-
-            if (source == butLn)
-                writer(calc.calculateOneNum(Calculator.oneNumOps.ln, reader()));
-
-            if (source == butEqual)
-                writer(calc.calculateEqual(reader()));
-
-            if (source == butCancel)
-                writer(calc.reset());
-
-            if (source == butBinary)
-                parsetoBinary();
+//            if (source == butDecimalPoint) {
+//                text.replaceSelection(".");
+//                return;
+//            }
+//
+//            if (source == butPi){
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.pi, reader()));
+//            }
+//
+//            if (source == butAdd) {
+//                writer(calc.calculateOps(Calculator.twoNumOps.add, reader()));
+//                text.replaceSelection(butAdd.getText());
+//            }
+//
+//            if (source == butMinus) {
+//                writer(calc.calculateOps(Calculator.twoNumOps.subtract, reader()));
+//                text.replaceSelection(butMinus.getText());
+//            }
+//
+//            if (source == butMultiply) {
+//                writer(calc.calculateOps(Calculator.twoNumOps.multiply, reader()));
+//                text.replaceSelection(butMultiply.getText());
+//            }
+//
+//            if (source == butDivide) {
+//                writer(calc.calculateOps(Calculator.twoNumOps.divide, reader()));
+//                text.replaceSelection(butDivide.getText());
+//            }
+//
+//            if (source == toPowerOfY) {
+//                writer(calc.calculateOps(Calculator.twoNumOps.toPowerOfY, reader()));
+//            }
+//
+//            if (source == butSquared) {
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.squared, reader()));
+//            }
+//
+//            if (source == butSquareRoot)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.squareRoot, reader()));
+//
+//            if (source == butCos)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.cos, reader()));
+//
+//            if (source == butSin)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.sin, reader()));
+//
+//            if (source == butTan)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.tan, reader()));
+//
+//            if (source == butLogBaseTen)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.logBaseTen, reader()));
+//
+//            if (source == butLn)
+//                writer(calc.calculateOneNum(Calculator.oneNumOps.ln, reader()));
+//
+//            if (source == butEqual)
+//                writer(calc.calculateEqual(reader()));
+//
+//            if (source == butCancel)
+//                writer(calc.reset());
+//
+//            if (source == butBinary)
+//                parsetoBinary();
         }
         else {
 
